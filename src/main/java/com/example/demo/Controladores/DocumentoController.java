@@ -39,7 +39,7 @@ public class DocumentoController {
         model.addAttribute("usuario", usuario);
         model.addAttribute("documentos", documentos);
         
-        return "dashboard"; // templates/dashboard.html
+        return "docs"; // templates/dashboard.html
     }
     
     // =====================================================
