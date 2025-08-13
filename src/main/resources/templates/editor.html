@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${esNuevo} ? 'Crear Documento' : 'Editar Documento'">Editor de Documento</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container py-4">
+        <h1 class="h3 text-center mb-4" th:text="${esNuevo} ? 'Crear Nuevo Documento' : 'Editar Documento'"></h1>
+        <form th:action="${esNuevo} ? @{/docs/crear} : @{'/docs/' + ${documento.id} + '/actualizar'}" method="post">
+            <div class="mb-3">
+                <label for="titulo" class="form-label">Título</label>
+                <input type="text" class="form-control" id="titulo" name="titulo" th:value="${documento != null} ? ${documento.titulo} : ''" required>
+            </div>
+            <div class="mb-3">
+                <label for="contenido" class="form-label">Contenido</label>
+                <textarea class="form-control" id="contenido" name="contenido" rows="10" th:text="${documento != null} ? ${documento.contenido} : ''" required></textarea>
+            </div>
+            <div class="d-flex justify-content-between">
+                <a th:href="@{/docs}" class="btn btn-secondary">Regresar</a>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
