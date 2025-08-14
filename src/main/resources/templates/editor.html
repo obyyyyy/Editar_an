@@ -167,12 +167,6 @@
             new bootstrap.Modal(document.getElementById('previewModal')).show();
         }
 
-        // Auto-guardar cada 30 segundos (opcional)
-        setInterval(() => {
-            const contenido = document.getElementById('editor').innerHTML;
-            localStorage.setItem('editor-backup', contenido);
-        }, 30000);
-
         // Configurar placeholder según el tipo de documento
         window.addEventListener('load', () => {
             const editor = document.getElementById('editor');
@@ -202,12 +196,6 @@
                     }
                 }
             });
-            
-            // Backup automático
-            const backup = localStorage.getItem('editor-backup');
-            if (backup && esNuevo && confirm('Se encontró un borrador guardado. ¿Deseas restaurarlo?')) {
-                editor.innerHTML = backup;
-            }
         });
     </script>
 </body>
